@@ -1,0 +1,51 @@
+<div id="dropin_panel">
+  <!-- Responsive calendar - START -->
+  <div class="responsive-calendar">
+    <div class="controls">
+        <a class="pull-left" data-go="prev"><div onclick="calPrev()" class="button">Previous</div></a>
+        <h4><span data-head-year></span> <span data-head-month></span></h4>
+        <a class="pull-right" data-go="next"><div onclick="calNext()" class="button">Next</div></a>
+    </div><hr/>
+    <div class="day-headers">
+      <div class="day header">Sun</div>
+      <div class="day header">Mon</div>
+      <div class="day header">Tue</div>
+      <div class="day header">Wed</div>
+      <div class="day header">Thu</div>
+      <div class="day header">Fri</div>
+      <div class="day header">Sat</div>
+    </div>
+    <div class="days" data-group="days">
+      <!-- the place where days will be generated -->
+       <h1 style="font-size:20px !important; text-align: center;">Loading...</h1>
+    </div>
+  </div>
+  <!-- Responsive calendar - END -->
+  <form>
+    <div class="input-group" style="margin-top:20px;">
+      <input id="dropin-day" placeholder="Select a day" type="date">
+      <div style="font-size:10px;">Date</div>
+      <input id="dropin-time" value="15:00" type="time">
+      <div style="font-size:10px;">Drop-in Time</div>
+      <input id="dropin-pickup" value="17:00" type="time">
+      <div style="font-size:10px;">Pickup Time</div>
+    </div>
+  </form>
+
+  <ul id="reserve_now_button" class="list inset">
+      <li><a tyle="text-align:center" onClick="dropinReserve()">Reserve for <span id="dropin-reservation"></span></a></li>
+  </ul>
+</div>
+
+<script type="text/javascript">
+function calPrev() {
+  $('.responsive-calendar').responsiveCalendar('prev');
+}
+function calNext() {
+  $('.responsive-calendar').responsiveCalendar('next');
+}
+
+$('.days .day').bind('click', function() {
+  console.log($(this).html());
+});
+</script>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+    <head>
+        <script>
+        (function() {
+            if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
+                var msViewportStyle = document.createElement("style");
+                msViewportStyle.appendChild(
+                    document.createTextNode("@-ms-viewport{width:auto!important}")
+                );
+                document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+            }
+        })();
+        </script>
+        <title>Polliwog Pond</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="stylesheet" type="text/css" href="css/icons.css" />    
+        <!--
+        <link rel="stylesheet" type="text/css" href="css/af.ui.css" title="default" />
+        -->
+        <link rel="stylesheet" type="text/css" href="css/src/main.css"  />
+        <link rel="stylesheet" type="text/css" href="css/src/appframework.css"  />
+
+        <link rel="stylesheet" type="text/css" href="css/src/badges.css"  />
+        <link rel="stylesheet" type="text/css" href="css/src/buttons.css"  />
+        <link rel="stylesheet" type="text/css" href="css/src/lists.css"  />
+        <link rel="stylesheet" type="text/css" href="css/src/forms.css"  />
+        <link rel="stylesheet" type="text/css" href="css/src/grid.css"  />
+
+        <link rel="stylesheet" type="text/css" href="plugins/css/af.actionsheet.css"  />
+        <link rel="stylesheet" type="text/css" href="plugins/css/af.popup.css"  />
+        <link rel="stylesheet" type="text/css" href="plugins/css/af.selectBox.css"  />
+
+        <link rel="stylesheet" type="text/css" href="css/src/android.css"  />
+        <link rel="stylesheet" type="text/css" href="css/src/win8.css"  />
+        <link rel="stylesheet" type="text/css" href="css/src/bb.css"  />
+        <link rel="stylesheet" type="text/css" href="css/src/ios7.css"  />
+        <link rel="stylesheet" type="text/css" href="css/src/ios.css"  /> 
+
+        <script type="text/javascript" charset="utf-8" src="intelxdk.js"></script>
+        <script type="text/javascript" charset="utf-8" src="xhr.js"></script>
+        
+        <!-- include af.desktopBrowsers.js on desktop browsers only -->
+        
+        <script src="js/jquery-1.11.0.min.js"></script>
+        <script src="js/jq.appframework.js"></script>
+        
+        <script type="text/javascript" charset="utf-8" src="./plugins/af.actionsheet.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./plugins/af.css3animate.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./plugins/af.passwordBox.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./plugins/af.scroller.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./plugins/af.selectBox.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./plugins/af.touchEvents.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./plugins/af.touchLayer.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./plugins/af.popup.js"></script>
+
+        <script type="text/javascript" charset="utf-8" src="./ui/src/appframework.ui.js"></script>
+        <!-- <script type="text/javascript" charset="utf-8" src="./ui/transitions/all.js"></script> -->
+        <script type="text/javascript" charset="utf-8" src="./ui/transitions/fade.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./ui/transitions/flip.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./ui/transitions/pop.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./ui/transitions/slide.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./ui/transitions/slideDown.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./ui/transitions/slideUp.js"></script>
+        
+        <script type="text/javascript" charset="utf-8" src="./js/gibberish-aes-1.0.0.min.js"></script>
+        
+        <link rel="stylesheet" href="css/jqx.base.css" type="text/css" />
+        <link rel="stylesheet" href="css/jqx.mobile.css" type="text/css" />
+
+        <script type="text/javascript" src="js/jqxcore.js"></script>
+        <script type="text/javascript" src="js/jqxdatetimeinput.js"></script>
+        <script type="text/javascript" src="js/jqxcalendar.js"></script>
+        <script type="text/javascript" src="js/jqxtooltip.js"></script>
+        <script type="text/javascript" src="js/jqxbuttons.js"></script>
+        <script type="text/javascript" src="js/jqxdata.js"></script>
+        <script type="text/javascript" src="js/jqxscrollbar.js"></script>
+        <script type="text/javascript" src="js/jqxlistbox.js"></script>
+        <script type="text/javascript" src="js/globalization/globalize.js"></script>
+
+        <script type="text/javascript" src="js/responsive-calendar.js"></script>
+        <link rel="stylesheet" href="css/responsive-calendar.css" type="text/css" />
+
+        <script src='https://cdn.firebase.com/v0/firebase.js'></script>
+        
+        <script src="http://debug-software.intel.com/target/target-script-min.js#ornnPvZyeYoJTE6i_E-S2lbqMIWETm9j2NUGu9verZo"></script> 
+        
+        <script type="text/javascript">            
+            var webRoot = "./";
+            // $.os.android=true;
+            $.ui.autoLaunch = false;
+            $.ui.openLinksNewTab = false;
+            //$.ui.resetScrollers=false;
+            
+            $(document).ready(function(){
+                //ui.launch();
+                var myDataRef = new Firebase('https://fiery-fire-9904.firebaseio.com/');
+            });
+            
+            /* This code is used to run as soon as appMobi activates */
+            var onDeviceReady = function () {
+                intel.xdk.device.setRotateOrientation("portrait");
+                intel.xdk.device.setAutoRotate(false);
+                webRoot = AppMobi.webRoot + "";
+                //hide splash screen
+                intel.xdk.device.hideSplashScreen();
+                $.ui.blockPageScroll(); //block the page from scrolling at the header/footer
+                $.ui.launch();
+                $.ui.scrollingDivs.menu_scroller.disable();
+
+            };
+            document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);
+
+            $.ui.ready(function(){
+                $.ui.blockPageScroll();
+                $.ui.toggleHeaderMenu(false);
+            });
+
+            function loadedHome(what) {
+                $.ui.toggleHeaderMenu(false);
+                $('#navbar').css('top', '');
+                $('#navbar').css('bottom', 0);
+                $.ui.toggleNavMenu(true);
+            }
+            
+            function loadedMyChild(what) {
+                $('#todays_date').text(getDate());
+                $.ui.toggleHeaderMenu(true);
+                $('#navbar').css('top', 0);
+                $('#navbar').css('bottom','');
+                $.ui.toggleNavMenu(true);
+            }
+            
+            function getDate(jsDate) {
+                var fullDate = jsDate || new Date();
+                var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : '0' + (fullDate.getMonth()+1);
+                return twoDigitMonth + "/" + fullDate.getDate() + "/" + fullDate.getFullYear();
+            }
+
+            Date.prototype.toDateInputValue = (function() {
+                var local = new Date(this);
+                local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+                return local.toJSON().slice(0,10);
+            });
+            
+            function registerAccount() {
+                var key = $('#registration_key').val();
+                Config.set('registration_key', GibberishAES.Hash.MD5(GibberishAES.s2a(key)));
+                Config.set('logged_in', 'true');
+                $.ui.loadContent("#home-panel", true, false, "flip");
+            }
+
+            function initMain() {
+                if(Config.get('logged_in') == 'true'){
+                    $.ui.clearHistory();
+                    $.ui.loadContent("#home-panel", true, false, "flip");
+                }
+            }
+
+            function loadedDropin() {
+                $('#dropin-day').val(new Date().toDateInputValue());
+                $('#reserve_now_button').hide();
+
+                loadCalendar();
+
+                //setBusyDates('#dropin');
+            }
+
+            function addLeadingZero(num) {
+                if(num.length == 2) { return num; }
+                if (num < 10) {
+                  return "0" + num;
+                } else {
+                  return "" + num;
+                }
+              }
+
+            function loadCalendar() {
+                if (!window.busy_dates) {
+                    var julieRef = new Firebase('https://fiery-fire-9904.firebaseio.com/calendar/busy_dates/');
+                    julieRef.on('value', function(snapshot) {
+                        if(snapshot.val() === null) {
+                            console.log('fail');
+                        } else {
+                            window.busy_dates = snapshot.val();
+                        }
+                    });
+                    setTimeout(loadCalendar, 2000);
+                } else {
+                    var events = {};
+                    for (var key in window.busy_dates) {
+                        if(window.busy_dates.hasOwnProperty(key)) {
+                            var split = key.split("-");
+                            events[split[2] + "-" + addLeadingZero(split[0]) + "-" + addLeadingZero(split[1])] = {};
+                        }
+                    }
+                    console.log(events);
+                    $( document ).ready( function() {
+                      $(".responsive-calendar").responsiveCalendar({
+                        events: events,
+                        startFromSunday: true,
+                        onDayClick: function(events) {
+                            console.log($(this).data('year'));
+                        }
+                      });
+                    });
+                }
+            }
+
+            function dropinChange(jsDate) {
+                $('#dropin-day').val(jsDate);
+                $('#dropin-reservation').html(getDate(jsDate));
+                $('#reserve_now_button').show();
+            }
+
+            function loadedCalendar() {
+                $("#calendar").jqxCalendar({
+                    theme: 'mobile',
+                    titleHeight: 40,
+                    columnHeaderHeight: 40,
+                    width: '100%',
+                    height: '60%',
+                    showOtherMonthDays: false
+                });
+                // Create Date objects.
+                var date1 = new Date();
+                var date2 = new Date();
+                var date3 = new Date();
+                date1.setDate(5);
+                date2.setDate(15);
+                date3.setDate(16);
+                // Add special dates by invoking the addSpecialDate method.
+                $("#calendar").jqxCalendar('addSpecialDate', date1, '', 'Special Date1');
+                $("#calendar").jqxCalendar('addSpecialDate', date2, '', 'Special Date2');
+                $("#calendar").jqxCalendar('addSpecialDate', date3, '', 'Special Date3');
+                $("#events").jqxListBox({
+                    theme: 'mobile',
+                    itemHeight: 34,
+                    width: '100%',
+                    height: '40%',
+                    source: [
+                        { html: "12:00 PM <strong>Lunch Time</strong>" },
+                        { html: "03:00 PM <strong>PM Snack</strong>" },
+                        { html: "03:30 PM <strong>Puzzles</strong>" },
+                        { html: "05:00 PM <strong>Picked Up</strong>" }
+                    ]
+                });
+                $("#calendar").jqxCalendar('focus');
+
+                $('#calendar').on('change', function (event) { 
+                    var jsDate = event.args.date;
+                    console.log(jsDate);
+                    $("#events").jqxListBox('beginUpdate'); 
+                    $("#events").jqxListBox('clear');
+                    $("#events").jqxListBox({
+                        theme: 'mobile',
+                        itemHeight: 34,
+                        width: '100%',
+                        height: '40%',
+                        source: [
+                            { html: "01:00 PM <strong>Lunch Time</strong>" },
+                            { html: "04:00 PM <strong>PM Snack</strong>" },
+                            { html: "06:30 PM <strong>Puzzles</strong>" },
+                            { html: "09:00 PM <strong>Picked Up</strong>" }
+                        ]
+                    });
+                    $("#events").jqxListBox('endUpdate'); 
+                });
+            }
+            
+            window.Config = {
+                get: function(key) {
+                    return window.localStorage.getItem(key);
+                },
+                set: function(key, value) {
+                    return window.localStorage.setItem(key, value);
+                },
+                remove: function(key) {
+                    return window.localStorage.removeItem(key);
+                },
+                clear: function() {
+                    return window.localStorage.clear();
+                }
+            };
+
+            if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)) {
+                var script = document.createElement("script");
+                script.src = "plugins/af.desktopBrowsers.js";
+                var tag = $("head").append(script);
+            }
+        </script>
+        <style type="text/css">
+            #afui {
+                height: 100% !important;
+            }
+            #logo {
+                margin-top: 5%;
+                text-align: center;
+                margin-bottom: 5%;
+            }
+            #buttons {
+                text-align: center;
+            }
+            #mychild {
+                text-align: center;
+            }
+            #todays_picture {
+                margin-top: 10px;
+            }
+            #todays_date {
+                font-weight: bold;
+            }
+            #todays_meals, #todays_changings, #todays_nap {
+                width: 60%;
+                text-align: left;
+                margin: 0 auto;
+                padding-top: 10px;
+            }
+            #todays_meals .button, #todays_changings .button {
+                margin: 0;
+            }
+            
+            #updateContact {
+                font-size: 10px;
+                margin: 0 !important;
+            }
+            
+            #afui .formGroupHead {
+                font-size: 26px !important;
+            }
+
+            #calendar {
+                text-align: center;
+            }
+            .placeholder {
+              color: #aaa;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="afui" class="android light">
+            <!-- this is the splashscreen you see. -->
+            <div id="splashscreen" class='ui-loader heavy'>
+                Polliwog Pond
+                <br>
+                <br><span class='ui-icon ui-icon-loading spin'></span>
+                <h1>Loading...</h1>
+
+            </div>
+            <div id="content">
+                <div id="main" class="panel" data-header="none" data-footer="none" data-load="initMain" selected="true">
+                    <div style="text-align:center">
+                        <br>
+                        <br>
+                        <h1>Polliwog Pond</h1>
+                        <br>
+                        <br><span id="error_message"></span>
+                        <br>
+                        <br>
+                    </div>
+                    <ul class="list inset">
+                        <li><input id="registration_key" type="text" placeholder="Registration Key"></li>
+                        <li><a class="icon user" style="text-align:center" onClick="registerAccount()">Register Account</a></li>
+                    </ul>
+                </div>
+                
+                <div id="home-panel" class="panel" data-load="loadedHome" data-footer="navbar_main" data-defer="home.html">
+                    Loading...<br><span class='ui-icon ui-icon-loading spin'></span>
+                </div>
+                
+                <div id="mychild-panel" title="My Child" class="panel" data-defer="mychild.html" data-load="loadedMyChild" data-tab="navbar_star" data-footer="navbar_mychild">
+                    Loading...<br><span class='ui-icon ui-icon-loading spin'></span>
+                </div>
+                
+                <div id="profile-panel" class="panel" data-defer="profile.html" data-tab="navbar_profile" data-footer="navbar_mychild">
+                    Loading...<br><span class='ui-icon ui-icon-loading spin'></span>
+                </div>
+                
+                <div id="calendar-panel" class="panel" data-defer="calendar.html" data-load="loadedCalendar" data-tab="navbar_calendar" data-footer="navbar_mychild">
+                    Loading...<br><span class='ui-icon ui-icon-loading spin'></span>
+                </div>
+
+                <div id="dropin-panel" title="Drop-in Reservations" class="panel" data-defer="dropin.html" data-load="loadedDropin" data-tab="navbar_dropin" data-footer="none">
+                    Loading...<br><span class='ui-icon ui-icon-loading spin'></span>
+                </div>
+            </div>
+            <footer id="navbar_main">
+                <a href="#phone" id='navbar_phone' class='icon phone' href="intel.xdk.device.launchExternal('tel:+12345679773');"></a>
+                <a href="#email" id='navbar_mail' class="icon mail" onclick="intel.xdk.device.sendEmail('Hello from the parents of kid.', 'me@kailahutchins.com' , 'A message from the Polliwog Pond app', true, null, null );"></a>
+                <a href="#text" id='navbar_text' class="icon message"  onclick="intel.xdk.device.launchExternal('sms://2345679773');"></a>
+            </footer>
+            <footer id="navbar_mychild">
+                <a href="#home-panel" id='navbar_home' class='icon home'>Home</a>
+                <a href="#mychild-panel" id='navbar_star' class="icon star">My Child</a>
+                <a href="#calendar-panel" id='navbar_calendar' class="icon calendar">Schedule</a>
+                <a href="#profile-panel" id='navbar_profile' class="icon user">Profile</a>
+            </div>
+        </div>
+    </body>
+</html>
