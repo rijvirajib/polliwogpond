@@ -23,6 +23,7 @@
   <!-- Responsive calendar - END -->
   <form>
     <div class="input-group" style="margin-top:20px;">
+      <input id="datepicker" placeholder="pickadate.js" />
       <input id="dropin-day" placeholder="Select a day" type="date">
       <div style="font-size:10px;">Date</div>
       <input id="dropin-time" value="15:00" type="time">
@@ -38,14 +39,12 @@
 </div>
 
 <script type="text/javascript">
+$('#datepicker').pickadate();
+
 function calPrev() {
   $('.responsive-calendar').responsiveCalendar('prev');
 }
 function calNext() {
   $('.responsive-calendar').responsiveCalendar('next');
 }
-
-$('.days .day').bind('click', function() {
-  console.log($(this).html());
-});
 </script>
